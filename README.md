@@ -40,7 +40,7 @@ Once you do that click the 3 dots and pick edit in yaml, you'll see your device
 in the action:.
 
 notify.alexa_media_living_room_echo
-notify.alexa_media_3d_printer_notification_group
+
 
     Use the group name if you want multiple Echos to yell at you at once.
 
