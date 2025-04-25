@@ -1,59 +1,82 @@
 # HABA – Home Assistant Boot Announcements
 
-[![Import Blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://raw.githubusercontent.com/smcneece/HABA/main/blueprints/automation/smcneece/haba.yaml)
-
-
-
-
-This blueprint was born from a simple need: I wanted Alexa to say something when Home Assistant finished booting — something *funny*, *sarcastic*, or just *straight-up villainous*. So I built **HABA**, a blueprint that lets Alexa greet you with randomized startup phrases ranging from evil AI threats to passive-aggressive snark.
+This blueprint was born from a simple need: I wanted Alexa to say something when Home Assistant finished booting — something *funny*, *sarcastic*, or just *straight-up villainous*.  
+So I built **HABA**, a blueprint that lets Alexa greet you with randomized startup phrases ranging from evil AI threats to passive-aggressive snark.
 
 ---
 
 ### 🚀 Features
 - ✅ Randomized Alexa announcements at HA startup
-- ✅ Optional sound effect using Alexa’s soundbank
-- ✅ Quiet hours support (e.g., 9AM–11PM only)
-- ✅ UI notification toggle (on/off)
-- ✅ 69 unique announcements built in
+- ✅ Optional startup sound effect (Alexa soundbank)
+- ✅ Quiet hours support (e.g., 9AM–11PM)
+- ✅ UI persistent notification toggle
+- ✅ 69 built-in announcements ready to roll
 
 ---
 
 ### 🛠️ Setup
 
-1. Import blueprint with button above.
-2. Fill out the required fields:
-   - **Alexa Notify Entity** – e.g. `notify.alexa_media_echo_dot`
-   - **Startup Sound** *(optional)* – e.g.  
+1. **Install the [Alexa Media Player Integration](https://github.com/custom-components/alexa_media_player) if you haven’t already.**  
+   *You must have Alexa Media Player set up in Home Assistant for this blueprint to work.*
+
+2. **Import the Blueprint:**  
+   [![Import Blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://raw.githubusercontent.com/smcneece/HABA/main/blueprints/automation/smcneece/haba.yaml)
+
+3. Fill out the required fields:
+   - **Alexa Notify Entity** – your Alexa notify service (see below)
+   - **Startup Sound** *(optional)* – e.g.
      ```
      soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_04
      ```
-3. Set your allowed time range if desired (default: 9AM–11PM).
-4. Enable or disable the optional UI persistent notification.
 
+4. Set your allowed time window if needed (default: 9AM–11PM).
 
-🗣️ Alexa Notify Entity
-Make sure Alexa Media Player is installed and set up.
-Go to Settings → Automations & Scenes → Create Automation
-Create a new automation, Scroll to "Then Do", choose Add Action,
-and search for: notify.alexa_media_, Look for your Alexa device and click on it.
-Once you do that click the 3 dots and pick edit in yaml, you'll see your device
-in the action:.
+5. Enable or disable the optional UI notification toggle.
 
-notify.alexa_media_living_room_echo
+---
 
+### 🗣️ Alexa Notify Entity Setup
 
-    Use the group name if you want multiple Echos to yell at you at once.
+To find your Alexa notify service:
 
-    🧠 You can also create Alexa announcement groups in the Alexa app for easier control.
+1. Go to **Settings → Automations & Scenes → Create Automation**
+2. Click **Create a new automation**
+3. Scroll down to **Then Do** and click **Add Action**
+4. Search for:  
+   `notify.alexa_media_`
+5. Select your Alexa device
+6. Click the **three dots → Edit in YAML**
+7. You’ll see something like:
+   ```yaml
+   action: notify.alexa_media_echoclockdot
+   ```
+8. Copy the value after `action:` and paste it into the blueprint as your Alexa Notify Entity.
+
+💡 *Want multiple Echo devices to yell at you?*  
+Use a group notify like `notify.alexa_media_everywhere` or create a group in the Alexa app and use its name.
+
+---
+
+### 🔗 How to Create Alexa Speaker Groups
+
+1. Open the **Alexa app**
+2. Tap **Devices** at the bottom
+3. Tap the **“+” icon** in the top-right
+4. Choose **Combine speakers**
+5. Select **Multi-room music**
+6. Choose the Echo devices you want to include
+7. Name the group (e.g., `everywhere`, `basement_echoes`)
+8. The group will show up as:  
+   `notify.alexa_media_<group_name>`
 
 ---
 
 ### 💡 Tips
 
-- Edit the blueprint to add your own quotes (they’re just in a list).
+- Edit the blueprint if you want to add your own quotes (they're just a list).
 - Alexa sound effects can be found here:  
   🔊 [Amazon Alexa Sound Library](https://developer.amazon.com/en-US/docs/alexa/custom-skills/ask-soundlibrary.html)
-- You don’t *have* to use a sound — just hit the toggle to off, and she'll quiet down, but is easily re-enabled!
+- Don't want a sound? Toggle it off in the blueprint — easy.
 
 ---
 
@@ -68,9 +91,9 @@ notify.alexa_media_living_room_echo
 
 ### 📝 Notes
 
-- This triggers only when Home Assistant fully restarts/reboots, not on a "quick reload".
-- If you run multiple Echo devices, use a group notify like `notify.alexa_media_everywhere` to reach them all.
-- All text and sounds are optional — just delete the soundbank line if you want voice only.
+- Triggers only on full Home Assistant reboot, not on quick reloads.
+- Recommend using a group notify (like `notify.alexa_media_everywhere`) if you want to announce across multiple Echo devices.
+- See instructions above to create a speaker group in the Alexa app.
 
 ---
 
