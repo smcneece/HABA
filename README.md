@@ -21,17 +21,13 @@ This blueprint was born from a simple need: I wanted Alexa to say something when
 
 ### 🛠️ Setup
 
-1. Click the **Import Blueprint** button above, or paste this into your browser:
-   ```
-   ```
-
+1. Import blueprint with button above.
 2. Fill out the required fields:
    - **Alexa Notify Entity** – e.g. `notify.alexa_media_echo_dot`
    - **Startup Sound** *(optional)* – e.g.  
      ```
      soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_04
      ```
-
 3. Set your allowed time range if desired (default: 9AM–11PM).
 4. Enable or disable the optional UI persistent notification.
 
@@ -42,7 +38,7 @@ This blueprint was born from a simple need: I wanted Alexa to say something when
 - Edit the blueprint to add your own quotes (they’re just in a list).
 - Alexa sound effects can be found here:  
   🔊 [Amazon Alexa Sound Library](https://developer.amazon.com/en-US/docs/alexa/custom-skills/ask-soundlibrary.html)
-- You don’t *have* to use a sound — just leave the field blank and she’ll speak the quote only.
+- You don’t *have* to use a sound — just hit the toggle to off, and she'll quiet down, but is easily re-enabled!
 
 ---
 
@@ -57,7 +53,7 @@ This blueprint was born from a simple need: I wanted Alexa to say something when
 
 ### 📝 Notes
 
-- This triggers only when Home Assistant fully restarts (not on core reload).
+- This triggers only when Home Assistant fully restarts/reboots, not on a "quick reload".
 - If you run multiple Echo devices, use a group notify like `notify.alexa_media_everywhere` to reach them all.
 - All text and sounds are optional — just delete the soundbank line if you want voice only.
 
