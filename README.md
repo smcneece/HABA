@@ -30,6 +30,21 @@ This blueprint was born from a simple need: I wanted Alexa to say something when
 3. Set your allowed time range if desired (default: 9AM–11PM).
 4. Enable or disable the optional UI persistent notification.
 
+
+🗣️ Alexa Notify Entity
+Make sure Alexa Media Player is installed and set up.
+Go to Settings → Automations & Scenes → Create Automation
+Create a new automation, Scroll to "Then Do", choose Add ACtion,
+and search for: notify.alexa_media_
+Look for your Alexa device.
+
+notify.alexa_media_living_room_echo
+notify.alexa_media_3d_printer_notification_group
+
+    Use the group name if you want multiple Echos to yell at you at once.
+
+    🧠 You can also create Alexa announcement groups in the Alexa app for easier control.
+
 ---
 
 ### 💡 Tips
