@@ -15,7 +15,6 @@ This blueprint was born from a simple need: I wanted Alexa to say something when
 - ✅ Quiet hours support (e.g., 9AM–11PM only)
 - ✅ UI notification toggle (on/off)
 - ✅ 69 unique announcements built in
-- ✅ Ready for GitHub import
 
 ---
 
