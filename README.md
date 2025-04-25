@@ -14,7 +14,7 @@ This blueprint was born from a simple need: I wanted Alexa to say something when
 - ✅ Optional sound effect using Alexa’s soundbank
 - ✅ Quiet hours support (e.g., 9AM–11PM only)
 - ✅ UI notification toggle (on/off)
-- ✅ No helpers or input_booleans required
+- ✅ 69 unique announcements built in
 - ✅ Ready for GitHub import
 
 ---
