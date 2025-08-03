@@ -1,6 +1,6 @@
 # HABA – Home Assistant Boot Announcements
 
-This blueprint was born from a simple need: I wanted Alexa to say something when Home Assistant finished booting — something *funny*, *sarcastic*, or just *straight-up villainous*.  
+This blueprint was born from a simple need: I am constantly tinkering with code, automations, etc so I wanted Alexa to say something when Home Assistant finished booting — something *funny*, *sarcastic*, or just *straight-up villainous*.  
 So I built **HABA**, a blueprint that lets Alexa greet you with randomized startup phrases ranging from evil AI threats to passive-aggressive snark.
 
 ---
