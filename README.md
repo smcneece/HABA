@@ -1,5 +1,19 @@
 # HABA – Home Assistant Boot Announcements
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/smcneece/HABA)](https://github.com/smcneece/HABA/releases)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/y/smcneece/HABA.svg)](https://github.com/smcneece/HABA/commits/main)
+[![GitHub](https://img.shields.io/github/license/smcneece/HABA)](LICENSE)
+[![Maintainer](https://img.shields.io/badge/maintainer-Shawn%20McNeece%20%40smcneece-blue.svg)](https://github.com/smcneece)
+
+> [![Sponsor](https://img.shields.io/badge/Sponsor-💖-pink)](https://github.com/sponsors/smcneece) <-- Why not sponsor me, even a few bucks shows you appreciate the work and gives encouragement. You can sponsor me monthly, or just a one time thing. Check out my [other HA Automations & Blueprints](https://github.com/smcneece?tab=repositories) while you're here.
+
+> ⭐ **Help Others Find This Blueprint!** If HABA is working well for you, please star this repository to help other Home Assistant users discover these snarky boot announcements!
+>
+> [![GitHub stars](https://img.shields.io/github/stars/smcneece/HABA?style=social)](https://github.com/smcneece/HABA/stargazers) [![GitHub forks](https://img.shields.io/github/forks/smcneece/HABA?style=social)](https://github.com/smcneece/HABA/network/members)
+
+> 📬 **Stay Updated:** Click the "Watch" button (top-right of this repo) → "Releases only" to get email notifications when new versions are released!
+
 This blueprint was born from a simple need: I am constantly tinkering with code, automations, etc so I wanted Alexa to say something when Home Assistant finished booting — something *funny*, *sarcastic*, or just *straight-up villainous*.  
 So I built **HABA**, a blueprint that lets Alexa greet you with randomized startup phrases ranging from evil AI threats to passive-aggressive snark.
 
@@ -10,7 +24,7 @@ So I built **HABA**, a blueprint that lets Alexa greet you with randomized start
 - ✅ Optional startup sound effect (Alexa soundbank)
 - ✅ Quiet hours support (e.g., 9AM–11PM)
 - ✅ UI persistent notification toggle
-- ✅ 69 built-in announcements ready to roll
+- ✅ 100 built-in announcements ready to roll
 
 ---
 
@@ -101,6 +115,10 @@ Use a group notify like `notify.alexa_media_everywhere` or create a group in the
 `home assistant` `alexa` `tts` `startup` `automation` `blueprint` `sound effect` `snarky` `funny` `bootup` `voice`
 
 ---
+
+---
+
+**Enjoying snarky boot announcements with improved randomness and clean code structure? Consider starring this repository to help others find these entertaining Home Assistant greetings!**
 
 🧠 **HABA – Home Assistant Boot Announcements**  
 Because a boring boot is a missed opportunity.

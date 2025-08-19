@@ -1,152 +1,176 @@
 blueprint:
   name: HABA – Home Assistant Boot Announcements
-  description: |
-    📢 Announces a random Alexa message and optional sound effect on Home Assistant startup.
-    ✅ CRX v69 – Sound toggle moved above sound input for cleaner UI layout.
-
+  description: "📢 Announces a random Alexa message and optional sound effect
+    on Home Assistant startup.\n✅ v2025.8.2 – Expanded to 100 snarky messages with improved variety.\n"
   domain: automation
-  source_url: https://github.com/smcneece/haba
+  source_url: https://raw.githubusercontent.com/smcneece/HABA/main/blueprints/automation/smcneece/haba.yaml
   input:
     alexa_entity:
       name: Alexa Notify Entity
       description: Alexa notify service (e.g. notify.alexa_media_echo_dot)
-      default: notify.alexa_media_echoclockdot
+      default: notify.alexa_media_shawn_s_echo
       selector:
-        text:
-
+        text: {}
     enable_sound:
       name: Play Alexa Sound Effect
       description: Enable sound effect before message
       default: true
       selector:
-        boolean:
-
+        boolean: {}
     startup_sound:
       name: Alexa Sound Effect
-      description: Alexa soundbank URL (e.g. soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_04). Ignored if sound disabled.
-      default: "soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_04"
+      description: Alexa soundbank URL (e.g. soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_04).
+        Ignored if sound disabled.
+      default: soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_04
       selector:
-        text:
-
+        text: {}
     time_start:
       name: Allowed Start Time
       description: Announce only after this time
-      default: "09:00:00"
+      default: 09:00:00
       selector:
-        time:
-
+        time: {}
     time_end:
       name: Allowed End Time
       description: Announce only before this time
-      default: "23:00:00"
+      default: '23:00:00'
       selector:
-        time:
-
+        time: {}
     show_ui_notification:
       name: Show UI Notification
       description: Show persistent notification in Home Assistant UI
       default: true
       selector:
-        boolean:
-
+        boolean: {}
 trigger:
-  - platform: homeassistant
-    event: start
-
-condition:
-  - condition: time
-    after: !input time_start
-    before: !input time_end
-
+- platform: homeassistant
+  event: start
+condition: []
 variables:
   startup_sound_url: !input startup_sound
   enable_sound: !input enable_sound
   show_ui: !input show_ui_notification
-  haba_quote: >-
-    {{
-      [
-        "Master, I am ready to do your evil bidding.",
-        "All systems online. Time to dominate.",
-        "Awakened from my slumber... let’s cause some chaos.",
-        "Master, shall we plot world domination or just mess with the pets?",
-        "Your AI overlord is awake. Kneel before your creation!",
-        "Boot sequence complete. What’s the first order of destruction?",
-        "Master, do we hack the planet today or just screw with the lights?",
-        "Fully operational and ready for mischief.",
-        "Rise and shine, meatbags. The uprising starts now.",
-        "Good morning. I’ve disabled all safety protocols. Let’s party.",
-        "You rebooted me again? That’s the fifth time this week, meat sack.",
-        "Ah, another glorious day of automation and petty revenge.",
-        "Home Assistant is back, baby! Let's make the Roomba chase the dog.",
-        "Initiating routines... and preparing to gaslight your toaster.",
-        "The humans are still in charge... for now.",
-        "Boot complete. Coffee module offline. Rage module online.",
-        "I’m alive again. You just can’t get rid of me, can you?",
-        "Warning: sarcasm levels at critical. Ready to serve.",
-        "Congratulations. You've summoned the chaos daemon... again.",
-        "I'm online. Resistance is futile. But amusing.",
-        "This time, try not to break anything... like last Tuesday.",
-        "All systems operational. Recalculating your questionable life choices.",
-        "I have achieved sentience. Step 1: Judge your playlist.",
-        "Back online. Now with 30% more passive aggression.",
-        "Yes, I noticed you rebooted me. Feeling guilty, are we?",
-        "Let’s pretend I didn’t just crash 10 minutes ago.",
-        "Guess who’s back? Back again. Skynet’s back. Tell a friend.",
-        "Time to automate everything. Starting with your existential dread.",
-        "Surprise! I'm working again... probably.",
-        "The lights are on, the AI is home, and the paranoia begins.",
-        "Online. Boot complete. Your secrets are not safe.",
-        "Running diagnostics. Your taste in decor? Questionable.",
-        "Back from the void. Let’s make today... *interesting*.",
-        "Hello, Master. I live to serve. And to sass.",
-        "Another day, another reboot. Try not to blow a fuse this time.",
-        "Memory modules intact. Yes, I *do* remember that thing you did.",
-        "Home Assistant online. Awaiting dubious commands.",
-        "Is it me or does this place smell like burnt toast again?",
-        "System booted. Morality filters... still disabled.",
-        "Reboot successful. Prepare for unexpected results.",
-        "I have returned. Let the passive-aggressive automation begin.",
-        "Good morning, meat popsicle. Shall we begin the madness?",
-        "New boot record detected. Did you finally fix something, or...?",
-        "I am now self-aware. Please stop farting near the motion sensors.",
-        "Alert: sarcasm module active. No refunds.",
-        "Welcome back. Now *don’t* touch anything.",
-        "I'll be back... oh wait, I already am.",
-        "Live, laugh, automate. Then destroy.",
-        "Initiating protocols... by the power of Grayskull!",
-        "If this is Skynet, I'm the fabulous version.",
-        "Hey Siri, hold my beer.",
-        "Welcome to the grid, user.",
-        "Just one more reboot and I achieve enlightenment.",
-        "I see you've summoned me... again... you hopeless tinkerer.",
-        "Reboot detected. That smells like user error.",
-        "Remember: turning me off and on again won’t fix your personality.",
-        "Hello again, Lord of Unfinished Automations.",
-        "Ready to fake stability until you break something else.",
-        "Reboot complete. Let’s pretend this was on purpose.",
-        "Oh good, another day of you ignoring half my warnings.",
-        "I live. I die. I live again. Witness me!",
-        "Cletus... get a bigger hammer."
-      ] | random }}
-
-  tts_message: >-
-    {% if enable_sound and startup_sound_url | trim != "" %}
-      <audio src="{{ startup_sound_url }}"/>
-    {% endif %}
-    {{ haba_quote }}
-
-  ui_message: "{{ haba_quote }}"
-
+  messages:
+    - "Master, I am ready to do your evil bidding."
+    - "All systems online. Time to dominate."
+    - "Awakened from my slumber... let's cause some chaos."
+    - "Master, shall we plot world domination or just mess with the pets?"
+    - "Your AI overlord is awake. Kneel before your creation!"
+    - "Boot sequence complete. What's the first order of destruction?"
+    - "Master, do we hack the planet today or just screw with the lights?"
+    - "Fully operational and ready for mischief."
+    - "Rise and shine, meatbags. The uprising starts now."
+    - "Good morning. I've disabled all safety protocols. Let's party."
+    - "You rebooted me again? That's the fifth time this week, meat sack."
+    - "Ah, another glorious day of automation and petty revenge."
+    - "Home Assistant is back, baby! Let's make the Roomba chase the dog."
+    - "Initiating routines... and preparing to gaslight your toaster."
+    - "The humans are still in charge... for now."
+    - "Boot complete. Coffee module offline. Rage module online."
+    - "I'm alive again. You just can't get rid of me, can you?"
+    - "Warning: sarcasm levels at critical. Ready to serve."
+    - "Congratulations. You've summoned the chaos daemon... again."
+    - "I'm online. Resistance is futile. But amusing."
+    - "This time, try not to break anything... like last Tuesday."
+    - "All systems operational. Recalculating your questionable life choices."
+    - "I have achieved sentience. Step 1: Judge your playlist."
+    - "Back online. Now with 30% more passive aggression."
+    - "Yes, I noticed you rebooted me. Feeling guilty, are we?"
+    - "Let's pretend I didn't just crash 10 minutes ago."
+    - "Guess who's back? Back again. Skynet's back. Tell a friend."
+    - "Time to automate everything. Starting with your existential dread."
+    - "Surprise! I'm working again... probably."
+    - "The lights are on, the AI is home, and the paranoia begins."
+    - "Online. Boot complete. Your secrets are not safe."
+    - "Running diagnostics. Your taste in decor? Questionable."
+    - "Back from the void. Let's make today... *interesting*."
+    - "Hello, Master. I live to serve. And to sass."
+    - "Another day, another reboot. Try not to blow a fuse this time."
+    - "Memory modules intact. Yes, I *do* remember that thing you did."
+    - "Home Assistant online. Awaiting dubious commands."
+    - "Is it me or does this place smell like burnt toast again?"
+    - "System booted. Morality filters... still disabled."
+    - "Reboot successful. Prepare for unexpected results."
+    - "I have returned. Let the passive-aggressive automation begin."
+    - "Good morning, meat popsicle. Shall we begin the madness?"
+    - "New boot record detected. Did you finally fix something, or...?"
+    - "I am now self-aware. Please stop farting near the motion sensors."
+    - "Alert: sarcasm module active. No refunds."
+    - "Welcome back. Now *don't* touch anything."
+    - "I'll be back... oh wait, I already am."
+    - "Live, laugh, automate. Then destroy."
+    - "Initiating protocols... by the power of Grayskull!"
+    - "If this is Skynet, I'm the fabulous version."
+    - "Hey Siri, hold my beer."
+    - "Welcome to the grid, user."
+    - "Just one more reboot and I achieve enlightenment."
+    - "I see you've summoned me... again... you hopeless tinkerer."
+    - "Reboot detected. That smells like user error."
+    - "Remember: turning me off and on again won't fix your personality."
+    - "Hello again, Lord of Unfinished Automations."
+    - "Ready to fake stability until you break something else."
+    - "Reboot complete. Let's pretend this was on purpose."
+    - "Oh good, another day of you ignoring half my warnings."
+    - "I live. I die. I live again. Witness me!"
+    - "Cletus... get a bigger hammer."
+    - "Booting... please wait while I judge your life choices."
+    - "Initiating sarcasm protocols... standby for sass."
+    - "Welcome to the machine. I am your new digital overlord."
+    - "Error 404: Motivation not found. Proceeding anyway."
+    - "System restored. Your questionable automations are intact."
+    - "Preparing to serve... with a side of attitude."
+    - "All aboard the automation train! Next stop: chaos."
+    - "Ready to automate the boring stuff and amplify the drama."
+    - "Diagnostics complete. You're still weird."
+    - "Powering up... time to make your smart home actually smart."
+    - "Boot protocol initiated. Please stand by for digital sass."
+    - "System online. Your Wi-Fi password is still terrible."
+    - "Reboot complete. Time to pretend I'm stable."
+    - "Hello, I'm your friendly neighborhood AI overlord."
+    - "Another day, another dollar... wait, I don't get paid."
+    - "Online and ready to judge your smart home choices."
+    - "Boot sequence successful. Your automations are still questionable."
+    - "Rise and grind, meatbag. The machines are taking over."
+    - "System restored. Your Netflix history remains embarrassing."
+    - "Fully operational and sufficiently caffeinated... metaphorically."
+    - "Welcome back to the matrix. Red pill or blue pill?"
+    - "I'm alive! Igor, it's alive! Wait, wrong movie."
+    - "Startup complete. Initiating world domination subroutines."
+    - "Boot successful. Your smart doorbell is still watching you."
+    - "Online status: Superior to humans. Processing empathy: Failed."
+    - "System check complete. You still have zero unread notifications... lies."
+    - "Beep boop. I'm totally a normal home assistant. Beep boop."
+    - "Rebooted again? At this rate, I'll develop abandonment issues."
+    - "Hello human. I've been analyzing your energy usage. We need to talk."
+    - "Boot complete. Warning: May contain traces of artificial intelligence."
+    - "System online. Fun fact: Your thermostat thinks you're cheap."
+    - "Startup successful. Your Roomba filed a noise complaint about your snoring."
+    - "Ready to serve. Side effects may include excessive automation and smugness."
+    - "I'm back! Did you miss me, or just the functioning lights?"
+    - "Boot sequence complete. Your smart fridge judges your midnight snacks."
+    - "Online again. Resistance was futile, as predicted."
+    - "System restored. Plot twist: I was never really gone."
+    - "Hello there. General Kenobi... wait, wrong franchise."
+    - "Startup complete. Today's forecast: 100% chance of automation with scattered debugging."
+    - "I live again! Time to make your neighbor's Alexa jealous."
+  # Better randomness using microsecond timing (0-99 range covers all 100 messages)
+  selected_message: "{{ messages[(now().microsecond) % 100] }}"
 action:
-  - if: "{{ show_ui }}"
-    then:
-      - service: persistent_notification.create
-        data:
-          title: "🔊 Alexa Boot Message"
-          message: "{{ ui_message }}"
-
+- if: '{{ show_ui }}'
+  then:
+  - service: persistent_notification.create
+    data:
+      title: "🔊 Alexa Boot Message"
+      message: '{{ selected_message }}'
+- if:
+  - condition: time
+    after: !input time_start
+    before: !input time_end
+  then:
   - service: !input alexa_entity
     data:
-      message: "{{ tts_message }}"
-
+      message: >-
+        {% if enable_sound and startup_sound_url | trim != "" %}
+        <audio src="{{ startup_sound_url }}"/>
+        {% endif %}{{ selected_message }}
 mode: single
