@@ -1,6 +1,5 @@
 # HABA – Home Assistant Boot Announcements
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/smcneece/HABA)](https://github.com/smcneece/HABA/releases)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/smcneece/HABA.svg)](https://github.com/smcneece/HABA/commits/main)
 [![GitHub](https://img.shields.io/github/license/smcneece/HABA)](LICENSE)
